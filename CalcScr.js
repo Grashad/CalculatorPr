@@ -44,7 +44,7 @@
 
         if (condCheck === 0) {
             if (input.match(filtDig) != null) { total = sSS += input }
-            if (input.match(filtDig) === null && total > 0 && arraY.length === 0 && arraY2.length < 1) {
+            if (input.match(filtDig) === null && total > 0 && condCheck === 0) {
                 arraY.push(total);
                 sSS = "";
                 total = 0;
@@ -55,21 +55,19 @@
 
     function storeOp(input) {
 
-        if (input.match(inputType) != null && sOOA.length <= 1 && total2 === 0) {
+        if (input.match(inputType) != null && sOOA.length <= 1 && condCheck === 1 | condCheck === 2) {
             sLS += input;
             sOOA.splice(0, 1, sLS);
             sLS = "";
             condCheck = 2  
         }
-        else if (arraY.length > 0 && input.match(inputType) != null) {
-        }
     }
 
 
     function calc2(input) {
-        if (input.match(inputType) === null && sOOA.length === 1) {
+        if (input.match(inputType) === null && condCheck === 2) {
             if (input.match(filtDig) != null) { total2 = sSS += input }
-        } else if (input.match(filtDig) === null && total2 > 0 && arraY2.length === 0) {
+        } else if (input.match(filtDig) === null && total2 > 0 && condCheck === 2) {
             arraY2.push(total2);
             sSS = "";
             total = 0;
@@ -79,7 +77,7 @@
     function result(input) {
     let resArray = historyStorage.resultStorage
       
-        if (arraY.length > 0 && sOOA.length > 0 && arraY2.length > 0 && input.match(inputType2) != null) {
+        if (condCheck === 3  && input.match(inputType2) != null) {
             ResCalc = arraY[0].concat(sOOA[0], arraY2[0]);
             let resF = Function("return " + ResCalc)();
             resArray.push(resF)
