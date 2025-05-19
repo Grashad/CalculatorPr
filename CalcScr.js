@@ -45,7 +45,7 @@
         if (condCheck === 0) {
             if (input.match(filtDig) != null) { total = sSS += input }
             if (input.match(filtDig) === null && total > 0 && condCheck === 0) {
-                arraY.push(total);
+                arraY.splice(0, 1, total);
                 sSS = "";
                 total = 0;
                 condCheck = 1            
@@ -65,26 +65,22 @@
 
 
     function calc2(input) {
-        if (input.match(inputType) === null && condCheck === 2) {
+        let resArray = historyStorage.resultStorage
+        if (input.match(inputType2) === null && condCheck === 2) {
             if (input.match(filtDig) != null) { total2 = sSS += input }
-        } else if (input.match(filtDig) === null && total2 > 0 && condCheck === 2) {
-            arraY2.push(total2);
+        } else if (input.match(inputType2) != null && total2 > 0 && condCheck === 2) {
+            arraY2.splice(0, 1,total2);
             sSS = "";
             total = 0;
-            condCheck = 3  
-        }
-    }
-    function result(input) {
-    let resArray = historyStorage.resultStorage
-      
-        if (condCheck === 3  && input.match(inputType2) != null) {
             ResCalc = arraY[0].concat(sOOA[0], arraY2[0]);
             let resF = Function("return " + ResCalc)();
             resArray.push(resF)
             console.log(`result ${resF}`);
-            condCheck = 4  
+            condCheck = 0    
         }
+        
     }
+
          
      function display(check) {
      switch(check) {
@@ -121,12 +117,9 @@
    function histStorageAndDelete(input) {
      
    }
-
     for (button of inputButton) {
         button.addEventListener("click", (f) => {
             input = f.target.textContent;
-           
-            result(input)
             calc(input);
             storeOp(input);
             calc2(input);
