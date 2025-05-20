@@ -94,6 +94,9 @@
         }
 
     }
+    function showHistory(){
+        
+    }
 
     function allClear(input) {
         if (input.match(delAC) != null) {
@@ -109,7 +112,7 @@
         }
     }
 
-
+ 
 
 
 
