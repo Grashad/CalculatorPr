@@ -4,7 +4,7 @@
 
     const inputButton = document.querySelectorAll(".buon");
     const dispErr = document.getElementsByClassName("dispErr");
-    const displayCalc = document.getElementsByClassName("calcF");
+    let displayCalc = document.getElementById("disP");
     const inputType = /(.*[\+\-\/\*])(?!.[\d])/
     const inputType2 = /(.*[\+\-\/\*=])(?!.[\d])/
     const filtDig = /(\d)/g;
@@ -39,7 +39,8 @@
         resultStorage: [],
     }
     let condCheck = 0
-
+  
+    
 
     /* Calculator Functions */
     function calc(input) {
@@ -117,7 +118,15 @@ function allClear(input) {
 }
 
 
-
+function display() {
+    if(condCheck === 0) {
+   displayCalc.innerText = `${total}`
+    }
+    else if(condCheck === 1) {
+    }
+    else if(condCheck === 3) {
+    }
+}
 
 
 
@@ -128,7 +137,8 @@ for (button of inputButton) {
         calc(input);
         storeOp(input);
         calc2(input);
-        allClear(input)
+        allClear(input);
+        display();
         console.log(total);
         console.log(total2)
         console.log(sSS)
