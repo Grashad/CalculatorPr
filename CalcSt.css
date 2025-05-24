@@ -7,7 +7,7 @@ html, body {
 
 html {
   font-size: 62.5%;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat","Pixelify Sans", sans-serif;
   box-sizing: border-box;
 }
 
@@ -28,21 +28,68 @@ main {
   display: grid;
   background: rgb(26, 24, 24);
   width: 500px;
-  height: 700px;
+  height: 750px;
   align-self: center;
   border-radius: 10px;
   overflow: hidden;
 }
-.display {
-  width: 450px;
-  height: 150px;
-  margin-top: 30px;
+
+.calcH {
+ display: flex;
+ width: 450px;
+ height: 60px;
+ margin-top: 30px;
   margin-left: 25px;
   margin-right: 25px;
   border: 2px rgb(39, 32, 32);
   border-radius: 5px;
   background: rgb(58, 54, 54);
+  justify-content: center;
 }
+
+
+.display {
+   display: flex;
+  width: 450px;
+  height: 60px;
+  margin-top: 10px;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 10px;
+  border: 2px rgb(39, 32, 32);
+  border-radius: 5px;
+  background: rgb(58, 54, 54);
+  justify-content: center;
+}
+p {
+  margin: 0;
+  font-size: 50px;
+  align-self: center;
+  font-family: "Pixelify Sans";
+  letter-spacing: 2px;
+  color: gray;
+}
+.brandContainer {
+  display: flex;
+  margin-right: 25px;
+  width: 240px;
+  height: 30px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(73, 61, 61);
+  justify-self: flex-end;
+  justify-content: center;
+}
+.brandFont {
+  display: inherit;
+  margin: 0px;
+  align-self: center;
+  font-family: "Turret Road";
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
 .buttonGrid {
   display: grid;
   justify-content: center;

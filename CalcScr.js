@@ -118,15 +118,17 @@ function allClear(input) {
 }
 
 
-function display() {
-    if(condCheck === 0) {
+function display(cond) {
+    if(cond === 0 && total > 0) {
    displayCalc.innerText = `${total}`
     }
-    else if(condCheck === 1) {
+    else if(cond === 2) {
+      displayCalc.innerText = `${total2}`
     }
-    else if(condCheck === 3) {
+    else if(cond === 0 && resArray.length > 0) {
+        displayCalc.innerText = `${resArray[-1]}`
     }
-}
+}   
 
 
 
@@ -138,7 +140,7 @@ for (button of inputButton) {
         storeOp(input);
         calc2(input);
         allClear(input);
-        display();
+        display(condCheck);
         console.log(total);
         console.log(total2)
         console.log(sSS)
