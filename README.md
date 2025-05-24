@@ -1,7 +1,7 @@
 ![image](https://github.com/user-attachments/assets/60c49dfa-50a6-4d0e-853c-9ed154bce0ba)
 
 
-Win 11 Calculator Replica 
+Win 11 Calculator Replica (Similar in functionality)
 
 Generally, it's my first fully handmade project that is dedicated mostly to learning purposes. 
 The more I learn, the more I throw on top of it.
