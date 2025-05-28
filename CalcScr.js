@@ -38,6 +38,7 @@
         previousVals: [],
         resultStorage: [],
     }
+    let arrStrgeRes = historyStorage.resultStorage
     let condCheck = 0
   
     
@@ -90,6 +91,7 @@ function calc2(input) {
         let resF = Function("return " + ResCalc)();
         resArray.push(resF)
         console.log(`result ${resF}`);
+        arrStrgeRes.push(resF)
         total = 0;
         sSS = 0;
         arraY = [];
@@ -119,14 +121,20 @@ function allClear(input) {
 
 
 function display(cond) {
-    if(cond === 0 && total > 0) {
+     displayCalc.style.color = "white"
+     if(cond === 0 && total === 0) {
+        displayCalc.style.color = "gray"
+        displayCalc.innerText = "00000000000000";
+     }
+    else if(cond === 0 && total > 0) {
    displayCalc.innerText = `${total}`
     }
     else if(cond === 2) {
       displayCalc.innerText = `${total2}`
     }
-    else if(cond === 0 && resArray.length > 0) {
-        displayCalc.innerText = `${resArray[-1]}`
+    else if(cond === 0 && arrStrgeRes > 0) {
+        let displayRes = arrStrgeRes[-1]
+        displayCalc.innerText = `${displayRes}`
     }
 }   
 
@@ -149,6 +157,7 @@ for (button of inputButton) {
         console.log(arraY);
         console.log(arraY2)
         console.log(sOOA);
+        console.log(arrStrgeRes);
         console.log(`condition2: ${condCheck}`)
     })
 }
