@@ -102,7 +102,6 @@
             arraY2.splice(0, 1, total2);
             arrStrgeCalc2.splice(0, 1, total2);
             sSS = "";
-            total = 0;
             ResCalc = arraY[0].concat(sOOA[0], arraY2[0]);
             let resF = Function("return " + ResCalc)();
             resArray.push(resF)
@@ -112,17 +111,18 @@
             dispLogic = 4
             condCheck = 0
             function clnMemory(condCheck) {
-                total = 0;
-                sSS = 0;
+                if(condCheck === 0 && total === 0){
+                total = null;
+                sSS = "";
                 arraY = [];
                 sLS = "";
                 sOOA = [];
-                total2 = 0;
+                total2 = null;
                 arraY2 = [];
             }
+        }
             clnMemory(condCheck)
         }
-
     }
 
 
@@ -160,8 +160,8 @@
         } else if (dispL === 4) {
             displayCalcHist.innerText = `${arrStrgeCalc1.join("") + arrStrgeOp.join("") + arrStrgeCalc2.join("")}`
         }
-        else if (condCheck === 0 && total > 0 && arrStrgeRes.length === 1) {
-            displayCalcHist.innerText = `${arrStrgeRes.join("")}`
+        if (condCheck < 1 && arrStrgeRes.length > 0) {
+            displayCalcHist.innerText = `${arrStrgeCalc1.join("") + arrStrgeOp.join("") + arrStrgeCalc2.join("")} = ${arrStrgeRes.join("")}`;
         }
     }
 
