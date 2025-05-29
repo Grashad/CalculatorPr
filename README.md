@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/60c49dfa-50a6-4d0e-853c-9ed154bce0ba)
+![image](https://github.com/user-attachments/assets/72669e44-70ba-4025-967a-92cf27040df0)
+
 
 
 Win 11 Calculator Replica (Similar in functionality)
