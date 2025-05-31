@@ -59,10 +59,12 @@
             currentDisplay = 1;
         }
         if (input.match(delDEL) != null && total > 0) {
-            total = total.slice(0, -1)
+            total = total.slice(0, -1);
+            sSS = sSS.slice(0, -1);
+
 
         }
-        if (input.match(inputType) != null && total > 0 && condCheck === 0) {
+        if (input.match(inputType) != null && total > 0 && condCheck === 0 && arraY.length === 0 ) {
             arraY.splice(0, 1, total);
             arrStrgeCalc1.splice(0, 1, total);
             sSS = "";
@@ -89,16 +91,17 @@
         if (input.match(inputType2) === null && sOOA.length > 0) {
             currentDisplay = 3;
             if (input.match(filtDig) != null) {
-                
+
                 total2 = sSS += input;
             }
             if (input.match(decPoint) != null && total2.indexOf(".") === -1) { total2 = sSS += input }
             if (input.match(delDEL) != null && total2 > 0) {
                 total2 = total2.slice(0, -1);
+                sSS = sSS.slice(0, -1);
             }
             condCheck = 2;
-            
-        } else if (input.match(inputType2) != null && total2 > 0 && condCheck === 2) {
+
+        } else if (input.match(inputType2) != null && total2 > 0 && condCheck === 2 && sOOA.length > 0) {
             let resArray = historyStorage.resultStorage
             arraY2.splice(0, 1, total2);
             arrStrgeCalc2.splice(0, 1, total2);
@@ -112,16 +115,16 @@
             dispLogic = 4
             condCheck = 0
             function clnMemory(condCheck) {
-                if(condCheck === 0 && total === 0){
-                total = null;
-                sSS = "";
-                arraY = [];
-                sLS = "";
-                sOOA = [];
-                total2 = null;
-                arraY2 = [];
+                if (condCheck === 0 && total === 0) {
+                    total = null;
+                    sSS = "";
+                    arraY = [];
+                    sLS = "";
+                    sOOA = [];
+                    total2 = null;
+                    arraY2 = [];
+                }
             }
-        }
             clnMemory(condCheck)
         }
     }
@@ -129,19 +132,23 @@
 
     function allClear(input) {
         if (input.match(delAC) != null) {
-            total = 0;
-            sSS = 0;
+            displayCalc.innerText = "AC";
+            displayCalcHist.innerText = "AC";
+            total = null;
+            sSS = "";
             arraY = [];
             sLS = "";
             sOOA = [];
-            total2 = 0;
+            total2 = null;
             arraY2 = [];
             resF = [];
+            arrStrgeCalc2 = []
+            arrStrgeCalc1 = []
             condCheck = 0;
         }
     }
     function display1(currentDisplay) {
-        if (currentDisplay === 1) {
+        if (currentDisplay === 1 && total != null) {
             displayCalc.innerText = `${total}`
         } else if (currentDisplay === 2) {
             displayCalc.innerText = `${sOOA.join("")}`
