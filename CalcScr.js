@@ -59,15 +59,18 @@
             currentDisplay = 1;
         }
         if (input.match(delDEL) != null && total > 0) {
-            total = total.slice(0, -1)
+            total = total.slice(0, -1);
+            sSS = sSS.slice(0, -1);
+
 
         }
-        if (input.match(inputType) != null && total > 0 && condCheck === 0) {
+        if (input.match(inputType) != null && total > 0 && condCheck === 0 && arraY.length === 0 ) {
             arraY.splice(0, 1, total);
             arrStrgeCalc1.splice(0, 1, total);
             sSS = "";
             total = 0;
             condCheck = 1
+            arrStrgeRes = []
         }
     }
 
@@ -88,59 +91,64 @@
         if (input.match(inputType2) === null && sOOA.length > 0) {
             currentDisplay = 3;
             if (input.match(filtDig) != null) {
-                
+
                 total2 = sSS += input;
             }
             if (input.match(decPoint) != null && total2.indexOf(".") === -1) { total2 = sSS += input }
             if (input.match(delDEL) != null && total2 > 0) {
                 total2 = total2.slice(0, -1);
+                sSS = sSS.slice(0, -1);
             }
             condCheck = 2;
-            
-        } else if (input.match(inputType2) != null && total2 > 0 && condCheck === 2) {
+
+        } else if (input.match(inputType2) != null && total2 > 0 && condCheck === 2 && sOOA.length > 0) {
             let resArray = historyStorage.resultStorage
             arraY2.splice(0, 1, total2);
             arrStrgeCalc2.splice(0, 1, total2);
             sSS = "";
-            total = 0;
             ResCalc = arraY[0].concat(sOOA[0], arraY2[0]);
             let resF = Function("return " + ResCalc)();
             resArray.push(resF)
             console.log(`result ${resF}`);
             currentDisplay = 4
-            arrStrgeRes.splice(0, 1, resF)
+            arrStrgeRes.push(resF)
             dispLogic = 4
             condCheck = 0
             function clnMemory(condCheck) {
-                total = 0;
-                sSS = 0;
-                arraY = [];
-                sLS = "";
-                sOOA = [];
-                total2 = 0;
-                arraY2 = [];
+                if (condCheck === 0 && total === 0) {
+                    total = null;
+                    sSS = "";
+                    arraY = [];
+                    sLS = "";
+                    sOOA = [];
+                    total2 = null;
+                    arraY2 = [];
+                }
             }
             clnMemory(condCheck)
         }
-
     }
 
 
     function allClear(input) {
         if (input.match(delAC) != null) {
-            total = 0;
-            sSS = 0;
+            displayCalc.innerText = "AC";
+            displayCalcHist.innerText = "AC";
+            total = null;
+            sSS = "";
             arraY = [];
             sLS = "";
             sOOA = [];
-            total2 = 0;
+            total2 = null;
             arraY2 = [];
             resF = [];
+            arrStrgeCalc2 = []
+            arrStrgeCalc1 = []
             condCheck = 0;
         }
     }
     function display1(currentDisplay) {
-        if (currentDisplay === 1) {
+        if (currentDisplay === 1 && total != null) {
             displayCalc.innerText = `${total}`
         } else if (currentDisplay === 2) {
             displayCalc.innerText = `${sOOA.join("")}`
@@ -160,8 +168,8 @@
         } else if (dispL === 4) {
             displayCalcHist.innerText = `${arrStrgeCalc1.join("") + arrStrgeOp.join("") + arrStrgeCalc2.join("")}`
         }
-        else if (condCheck === 0 && total > 0 && arrStrgeRes.length === 1) {
-            displayCalcHist.innerText = `${arrStrgeRes.join("")}`
+        if (condCheck < 1 && arrStrgeRes.length > 0) {
+            displayCalcHist.innerText = `${arrStrgeCalc1.join("") + arrStrgeOp.join("") + arrStrgeCalc2.join("")} = ${arrStrgeRes.join("")}`;
         }
     }
 
