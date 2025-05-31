@@ -68,6 +68,7 @@
             sSS = "";
             total = 0;
             condCheck = 1
+            arrStrgeRes = []
         }
     }
 
@@ -107,7 +108,7 @@
             resArray.push(resF)
             console.log(`result ${resF}`);
             currentDisplay = 4
-            arrStrgeRes.splice(0, 1, resF)
+            arrStrgeRes.push(resF)
             dispLogic = 4
             condCheck = 0
             function clnMemory(condCheck) {
