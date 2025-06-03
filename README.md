@@ -16,7 +16,7 @@ Functions:
 
 
 >  Perform basic arithmetic [done]
->> Store and display previous calculations [In progress]
+>> Store and display previous calculations [Done]
 >>>  Accept keyboard input [In progress]
 >>>>  Theme switcher [Planned]
 
